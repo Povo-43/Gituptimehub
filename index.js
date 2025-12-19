@@ -22,7 +22,7 @@ async function main() {
 
         // HTTP(GET)
         if (checks.http && url) {
-            const result = await httpdChecks.checkHttp(url);
+            const result = await httpdChecks.check_http(url);
             console.log("http:", result);
             targetResult.results.http = result;
             if (!result.ok) failed = true;
@@ -30,7 +30,7 @@ async function main() {
 
         // HEAD
         if (checks.head && url) {
-            const result = await headChecks.checkHead(url);
+            const result = await headChecks.check_head(url);
             console.log("head:", result);
             targetResult.results.head = result;
             if (!result.ok) failed = true;
@@ -38,7 +38,7 @@ async function main() {
 
         // Response Time
         if (checks.restime && url) {
-            const result = await restimeChecks.checkResponseTime(url);
+            const result = await restimeChecks.check_restime(url);
             console.log("restime:", result);
             targetResult.results.restime = result;
             if (!result.ok) failed = true;
@@ -46,7 +46,7 @@ async function main() {
 
         // DNS
         if (checks.dns && host) {
-            const result = await dnsChecks.checkDns(host);
+            const result = await dnsChecks.check_dns(host);
             console.log("dns:", result);
             targetResult.results.dns = result;
             if (!result.ok) failed = true;
@@ -54,7 +54,7 @@ async function main() {
 
         // TCP
         if (checks.tcp && host && checks.tcp.port) {
-            const result = await tcpChecks.checkTcp(host, checks.tcp.port);
+            const result = await tcpChecks.check_tcp(host, checks.tcp.port);
             console.log("tcp:", result);
             targetResult.results.tcp = result;
             if (!result.ok) failed = true;

@@ -15,5 +15,13 @@
     "url": "https://github.com/TeamKOTOCA/status/issues"
   },
   "homepage": "https://github.com/TeamKOTOCA/status#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dns": "^0.2.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "net": "^1.0.2",
+    "path": "^0.12.7"
+  }
 }

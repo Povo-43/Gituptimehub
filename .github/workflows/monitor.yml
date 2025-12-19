@@ -24,9 +24,9 @@ jobs:
       - name: Run monitor
         run: node src/index.js
 
-      - name: Deploy to gh-pages
+      - name: Deploy to result
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
+          publish_branch: result
           publish_dir: ./dist
