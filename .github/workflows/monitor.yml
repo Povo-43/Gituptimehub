@@ -16,55 +16,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # main ブランチを checkout
       - name: Checkout main
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      # Node.js セットアップ
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Copy previous results
-        run: |
-          git fetch origin result || echo "No result branch yet"
-          mkdir -p result
-          if git show origin/result:result.json > /dev/null 2>&1; then
-            git show origin/result:result.json > result/result.json
-            echo "Previous result.json copied to main/result/"
-          else
-            echo "No previous result.json"
-          fi
+      # 1. resultブランチだけを 'result-data' というフォルダにチェックアウトする
+      - name: Checkout result branch
+        uses: actions/checkout@v4
+        with:
+          ref: result
+          path: result-data # 別フォルダに置く
+        continue-on-error: true # 初回などでブランチがない場合に備える
 
-
-      # 監視スクリプト実行
+      # 2. 監視スクリプト実行 (出力先を result-data/ にする)
+      # スクリプト内で ../result-data/result.json 等を読み書きするようにするか、
+      # ここでファイルをコピーして渡します。
       - name: Run monitor
-        run: node checks/index.js
+        run: |
+          # result-data から前回の結果をコピー (もしあれば)
+          [ -d result-data ] && cp -r result-data/* result/ || echo "No previous results"
+          
+          # スクリプト実行 (result/ 配下に新しいファイルが生成される)
+          node checks/index.js
 
-      # result ブランチに commit & push
+      # 3. result/ の中身を result-data/ に戻して push する
       - name: Commit & Push result
         run: |
+          # result-data フォルダへ移動
+          cd result-data || (mkdir result-data && cd result-data && git init && git checkout -b result)
+          
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # result ブランチを作成/チェックアウト
-          git fetch origin result || echo "No result branch yet"
-          git checkout -B result origin/result || git checkout -b result
+          # mainのresultフォルダからファイルをコピーしてくる
+          cp -r ../result/* .
 
-          # main の /result 配下のファイルをルートにコピー
-          cp -r result/* .
-
-          # result 配下ではなくルート直下を add
-          git add *.json
-
-          # commit
+          git add .
           git commit -m "Update monitor results $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-
-          # リモートの result を取り込む（rebase）
-          git pull --rebase origin result || echo "No remote changes"
-
-          # push
-          git push origin result --force-with-lease
+          
+          # 認証設定（actions/checkout を使っているので自動で入りますが、念のため）
+          git push origin result
