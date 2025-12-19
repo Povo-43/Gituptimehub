@@ -88,7 +88,7 @@ async function main() {
         newResults.push(targetResult);
     }
 
-    const distDir = path.resolve("./dist");
+    const distDir = path.resolve("./result");
     await fs.mkdir(distDir, { recursive: true });
     const outFile = path.join(distDir, "result.json");
 
