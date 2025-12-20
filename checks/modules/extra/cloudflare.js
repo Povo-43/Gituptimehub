@@ -4,7 +4,7 @@
  * @param {string} serviceName 完全一致させるサービス名 (例: "Cloudflare Workers", "Tokyo, Japan - (NRT)")
  * @returns {Promise<{ name: string, rawStatus: string, normalizedStatus: string } | null>}
  */
-export async function getCloudflareStatus(serviceName) {
+export async function getStatus(serviceName) {
     if (!serviceName) return null;
 
     const url = "https://www.cloudflarestatus.com/api/v2/components.json";
@@ -40,8 +40,7 @@ export async function getCloudflareStatus(serviceName) {
         }
 
         return { 
-            name: comp.name, 
-            rawStatus, 
+            name: comp.name,
             normalizedStatus 
         };
     } catch (e) {

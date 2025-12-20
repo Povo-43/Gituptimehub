@@ -1,6 +1,6 @@
 
 
-export async function getGithubStatus(service) {
+export async function getStatus(service) {
     const url = "https://www.githubstatus.com/api/v2/status.json";
 
     try {

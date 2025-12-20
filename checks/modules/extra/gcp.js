@@ -1,5 +1,5 @@
 
-export async function getGcpStatus(service, region = "global") {
+export async function getStatus(service, region = "global") {
     const url = "https://status.cloud.google.com/incidents.json";
 
     try {

@@ -68,8 +68,8 @@
             "category": "extras",
             "type": "provider",
             "meta": {
-                "provider": "gcp",
-                "service": "dns"
+                "provider": "cloudflare",
+                "service": "workers"
             }
         }
     ]

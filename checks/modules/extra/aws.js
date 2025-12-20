@@ -1,7 +1,6 @@
 import { JSDOM } from "jsdom";
 
-export async function getAwsStatus(service) {
-    // AWSは現在「Health Dashboard」に移行していますが、このURLもまだ機能します
+export async function getStatus(service) {
     const url = "https://status.aws.amazon.com/";
     
     try {

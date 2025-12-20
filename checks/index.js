@@ -84,9 +84,9 @@ async function checkExtra(target) {
         provider: meta.provider,
         service: meta.service
         });
-        return { results: { statusApi: r }, failed: !r.ok };
+        return { results: r};
     } catch (e) {
-        return { results: { statusApi: { ok: false, error: e.message } }, failed: true };
+        return { results: { ok: false, error: e.message }, failed: true };
     }
 }
 

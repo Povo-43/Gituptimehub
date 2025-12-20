@@ -1,5 +1,5 @@
 
-export async function getRenderStatus(service) {
+export async function getStatus(service) {
     const url = "https://status.render.com/api/v2/status.json";
 
     try {

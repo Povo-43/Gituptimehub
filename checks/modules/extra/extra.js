@@ -15,12 +15,20 @@ export async function getServiceStatus({ provider, service }) {
 
         const mod = await loader();
 
-        // 各 provider は getStatus(service) を export する想定
         if (typeof mod.getStatus !== "function") {
             throw new Error(`Provider ${provider} has no getStatus()`);
         }
 
         const raw = await mod.getStatus(service);
+        console.log(raw);
+        if(raw == null){
+            return {
+                ok: false,
+                provider,
+                status: "unknown",
+                error: e.message,
+            };
+        }
 
         return {
             ok: true,
