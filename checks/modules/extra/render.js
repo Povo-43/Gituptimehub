@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 
 export async function getRenderStatus(service) {
     const url = "https://status.render.com/api/v2/status.json";

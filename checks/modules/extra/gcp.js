@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 
 export async function getGcpStatus(service, region = "global") {
     const url = "https://status.cloud.google.com/incidents.json";

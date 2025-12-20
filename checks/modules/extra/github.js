@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+
 
 export async function getGithubStatus(service) {
     const url = "https://www.githubstatus.com/api/v2/status.json";
