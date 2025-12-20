@@ -1,5 +1,5 @@
 {
-  "name": "kotoca_status",
+  "name": "GitUptimeHub",
   "type": "module",
   "version": "0.0.1",
   "main": "./checks/index.js",
