@@ -62,7 +62,8 @@ async function checkSelf(target) {
     }
 
     // TCP
-    if (meta.tcp_port && meta.host) {
+    if (meta.tcp?.port && meta.host) {
+
         try {
         const r = await tcpChecks.check_tcp(meta.host, meta.tcp_port);
         results.tcp = r;
