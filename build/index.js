@@ -138,7 +138,7 @@ async function copyAndReplace() {
             if (file === 'index.html') {
                 const incidentsHTML = await generateIncidentsHTML();
                 content = content.replace(
-                    /<div id="incidents_div">[\s\S]*<\/div>/,
+                    /<div id="incidents_div">[\s\S]*?<\/div>/,
                     `<div id="incidents">\n${incidentsHTML}\n</div>`
                 );
             }
