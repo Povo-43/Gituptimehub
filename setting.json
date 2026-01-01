@@ -1,128 +1,157 @@
 {
-    "common": {
-        "title": "KOTOCA",
-        "logo": "https://kotoca.net/KOTOCA.webp",
-        "favicon": "https://kotoca.net/KOTOCA.webp",
-        "theme": "dark"
+  "common": {
+    "title": "KOTOCA",
+    "logo": "https://kotoca.net/KOTOCA.webp",
+    "favicon": "https://kotoca.net/KOTOCA.webp",
+    "theme": "dark"
+  },
+  "categories": [
+    {
+      "id": "kotoca_services",
+      "label": "API"
     },
-    "categories": [
-        {
-            "id": "kotoca_services",
-            "label": "内部サービス"
+    {
+      "id": "core",
+      "label": "内部サービス"
+    },
+    {
+      "id": "cat_1767309323322",
+      "label": "制作したwebサイト"
+    },
+    {
+      "id": "cat_1767309436683",
+      "label": "KOTOCA cloud(自宅鯖)"
+    },
+    {
+      "id": "cat_1767309651028",
+      "label": "依存先サービス"
+    }
+  ],
+  "targets": [
+    {
+      "label": "KOTOCA backend API",
+      "category": "kotoca_services",
+      "type": "self",
+      "meta": {
+        "url": "https://api.kotoca.net",
+        "http": true,
+        "head": true,
+        "restime": true,
+        "dns": true,
+        "tcp": {
+          "port": 80
         },
-        {
-            "id": "core",
-            "label": "依存先サービス"
-        }
-    ],
-    "targets": [
-        {
-            "label": "kotoca公式サイト",
-            "category": "kotoca_services",
-            "type": "self",
-            "meta": {
-                "url": "https://kotoca.net",
-                "host": "kotoca.net",
-
-                "http": true,
-                "head": true,
-                "restime": true,
-                "dns": true,
-                "tcp": {
-                    "port": 443
-                },
-                "ping": true
-            }
+        "ping": true
+      }
+    },
+    {
+      "label": "KOTOCA website",
+      "category": "core",
+      "type": "self",
+      "meta": {
+        "url": "https://kotoca.net",
+        "http": true,
+        "head": true,
+        "restime": true,
+        "dns": true,
+        "tcp": {
+          "port": 80
         },
-        {
-            "label": "kotocaAPI",
-            "category": "kotoca_services",
-            "type": "self",
-            "meta": {
-                "url": "https://api.kotoca.net",
-                "host": "api.kotoca.net",
-
-                "http": true,
-                "head": true,
-                "restime": true,
-                "dns": true,
-                "tcp": {
-                "port": 443
-                },
-                "ping": true
-            }
+        "ping": true
+      }
+    },
+    {
+      "label": "Immeのポートフォリオ",
+      "category": "cat_1767309323322",
+      "type": "self",
+      "meta": {
+        "url": "https://imme.kotoca.net",
+        "http": true,
+        "head": true,
+        "restime": true,
+        "dns": true,
+        "tcp": {
+          "port": 80
         },
-        {
-            "label": "GitHub Actions",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "github",
-                "service": "actions"
-            }
+        "ping": true
+      }
+    },
+    {
+      "label": "さくら雑談王国公式サイト",
+      "category": "cat_1767309323322",
+      "type": "self",
+      "meta": {
+        "url": "https://sakura.kotoca.net",
+        "http": true,
+        "head": true,
+        "restime": true,
+        "dns": true,
+        "tcp": {
+          "port": 80
         },
-        {
-            "label": "Render Dashboard",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "render",
-                "service": "dashboard"
-            }
+        "ping": true
+      }
+    },
+    {
+      "label": "Pve01",
+      "category": "cat_1767309436683",
+      "type": "self",
+      "meta": {
+        "url": "https://prox.kotoca.net",
+        "http": true,
+        "head": true,
+        "restime": true,
+        "dns": true,
+        "tcp": {
+          "port": 80
         },
-        {
-            "label": "Cloudflare Workers",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "cloudflare",
-                "service": "workers"
-            }
-        },
-        {
-            "label": "Dropbox",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "dropbox",
-                "service": "website"
-            }
-        },
-        {
-            "label": "Notion",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "notion",
-                "service": "api"
-            }
-        },
-        {
-            "label": "OpenAI",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "openai",
-                "service": "api"
-            }
-        },
-        {
-            "label": "discord",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "discord",
-                "service": "api"
-            }
-        },
-        {
-            "label": "x",
-            "category": "core",
-            "type": "provider",
-            "meta": {
-                "provider": "x",
-                "service": "gnip"
-            }
-        }
-    ]
+        "ping": true
+      }
+    },
+    {
+      "label": "Render",
+      "category": "cat_1767309651028",
+      "type": "provider",
+      "meta": {
+        "provider": "render",
+        "service": "dashboard"
+      }
+    },
+    {
+      "label": "github(action)",
+      "category": "cat_1767309651028",
+      "type": "provider",
+      "meta": {
+        "provider": "github",
+        "service": "actions"
+      }
+    },
+    {
+      "label": "github(pages)",
+      "category": "cat_1767309651028",
+      "type": "provider",
+      "meta": {
+        "provider": "github",
+        "service": "pages"
+      }
+    },
+    {
+      "label": "cloudflare(pages)",
+      "category": "cat_1767309651028",
+      "type": "provider",
+      "meta": {
+        "provider": "cloudflare",
+        "service": "pages"
+      }
+    },
+    {
+      "label": "discord",
+      "category": "cat_1767309651028",
+      "type": "provider",
+      "meta": {
+        "provider": "discord",
+        "service": "api"
+      }
+    }
+  ]
 }
